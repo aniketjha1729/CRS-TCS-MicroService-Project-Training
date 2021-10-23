@@ -15,7 +15,7 @@ public class Student{
 	private String studentMobile;
 	private String studentGender;
 	private String studentPasword;
-	
+	private String approvedStatus;
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub

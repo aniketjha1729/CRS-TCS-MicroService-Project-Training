@@ -1,6 +1,6 @@
-	/**
- * 
- */
+/**
+* 
+*/
 package com.tcs.dao;
 
 import java.sql.Connection;
@@ -25,11 +25,11 @@ import com.tcs.utils.DBUtils;
 @Repository
 public class StudentOperation implements StudentDAOInterFace {
 	Connection connection = DBUtils.getConnection();
+
 	@Override
 	public boolean addStudent(Student student) throws StudentNotRegisteredException {
 		// TODO Auto-generated method stub
 		try {
-			System.out.println(student.toString());	
 			PreparedStatement preparedStatement = connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT);
 			preparedStatement.setLong(1, student.getStudentId());
 			preparedStatement.setString(2, student.getStudentName());
@@ -38,14 +38,12 @@ public class StudentOperation implements StudentDAOInterFace {
 			preparedStatement.setString(5, student.getStudentMobile());
 			preparedStatement.setString(6, student.getStudentGender());
 			preparedStatement.setString(7, student.getStudentPasword());
-			System.out.println(preparedStatement);
-			int rowAffected=preparedStatement.executeUpdate();
-			System.out.println(rowAffected);
+			int rowAffected = preparedStatement.executeUpdate();
 		} catch (Exception ex) {
 			throw new StudentNotRegisteredException(student.getStudentName());
-		} 
+		}
 		return true;
-		
+
 	}
 
 	@Override
@@ -54,9 +52,9 @@ public class StudentOperation implements StudentDAOInterFace {
 		List<Student> students = new ArrayList<Student>();
 		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.FETCH_STUDENT);
 		ResultSet rs = stmt.executeQuery();
-		while(rs.next()) {
-			students.add(new Student(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
-					rs.getString(5),rs.getString(6),rs.getString(7)));
+		while (rs.next()) {
+			students.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), rs.getString(7)));
 		}
 		return students;
 	}
@@ -64,21 +62,21 @@ public class StudentOperation implements StudentDAOInterFace {
 	@Override
 	public Student getStudentById(int id) throws SQLException {
 		// TODO Auto-generated method stub
-		String s = SQLQueriesConstants.VIEW_SELECTED_STUDENT+ id;
+		String s = SQLQueriesConstants.VIEW_SELECTED_STUDENT + id;
 		PreparedStatement stmt = connection.prepareStatement(s);
-		ResultSet rs= stmt.executeQuery();
+		ResultSet rs = stmt.executeQuery();
 		if (rs.next())
-			return new Student(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
-					rs.getString(5),rs.getString(6),rs.getString(7));
+			return new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), rs.getString(7));
 		return null;
 	}
 
 	@Override
 	public Student deleteStudent(int id) throws SQLException {
 		// TODO Auto-generated method stub
-		String s = SQLQueriesConstants.VIEW_SELECTED_STUDENT+ id;
+		String s = SQLQueriesConstants.VIEW_SELECTED_STUDENT + id;
 		PreparedStatement stmt = connection.prepareStatement(s);
-		ResultSet rs= stmt.executeQuery();
+		ResultSet rs = stmt.executeQuery();
 		stmt = connection.prepareStatement(SQLQueriesConstants.DELETE_SELECTED_ID_STUDENT_DATA);
 		stmt.setInt(1, id);
 		stmt.execute();
@@ -97,21 +95,19 @@ public class StudentOperation implements StudentDAOInterFace {
 	public boolean studentLogin(String studentEmail, String studentPassword) throws UserNotFoundException {
 		// TODO Auto-generated method stub
 		try {
-			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.STUDENT_VERIFY_CREDENTIALS);
-			preparedStatement.setString(1,studentEmail);
+			PreparedStatement preparedStatement = connection
+					.prepareStatement(SQLQueriesConstants.STUDENT_VERIFY_CREDENTIALS);
+			preparedStatement.setString(1, studentEmail);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if(!resultSet.next()) {
+			if (!resultSet.next()) {
 				System.out.println("hello");
-				throw new UserNotFoundException(studentEmail);}
-			else if(studentPassword.equals(resultSet.getString("studentPassword")))
-			{
+				throw new UserNotFoundException(studentEmail);
+			} else if (studentPassword.equals(resultSet.getString("studentPassword"))) {
 				return true;
-			}
-			else
-			{
+			} else {
 				return false;
 			}
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			System.out.println(ex);
 		}
 		return false;
@@ -125,26 +121,25 @@ public class StudentOperation implements StudentDAOInterFace {
 			preparedStatement.setInt(1, studentId);
 			preparedStatement.setInt(2, courseId);
 			System.out.println(preparedStatement);
-			int rowAffected=preparedStatement.executeUpdate();
+			int rowAffected = preparedStatement.executeUpdate();
 			System.out.println(rowAffected);
 		} catch (Exception ex) {
 			throw new StudentNotRegisteredException("hello");
-		} 
+		}
 		return true;
 	}
 
 	@Override
 	public List myCourses(int studentId) throws SQLException {
 		// TODO Auto-generated method stub
-		List<String> myCourses=new ArrayList<String>();
+		List<String> myCourses = new ArrayList<String>();
 		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.STUDENT_MY_COURSE);
 		stmt.setInt(1, studentId);
 		ResultSet rs = stmt.executeQuery();
-		while(rs.next()) {
+		while (rs.next()) {
 			myCourses.add(new String(rs.getString(1)));
 		}
 		return myCourses;
 	}
 
-	
 }

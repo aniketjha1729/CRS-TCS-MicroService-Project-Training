@@ -23,18 +23,17 @@ public class StudentServiceOperation implements StudentInterFace {
 
 	@Autowired
 	private StudentDAOInterFace students;
-	
+
 	@Override
-	public void addStudent(Student student)
-			throws StudentNotRegisteredException {
+	public void addStudent(Student student) throws StudentNotRegisteredException {
 		// TODO Auto-generated method stub
-		
-		try{
+
+		try {
 			students.addStudent(student);
-		}catch(StudentNotRegisteredException ex){
+		} catch (StudentNotRegisteredException ex) {
 			throw ex;
 		}
-		
+
 	}
 
 	@Override
@@ -47,7 +46,7 @@ public class StudentServiceOperation implements StudentInterFace {
 	public Student getStudentById(int id) throws SQLException {
 		// TODO Auto-generated method stub
 		return students.getStudentById(id);
-		
+
 	}
 
 	@Override
@@ -71,9 +70,9 @@ public class StudentServiceOperation implements StudentInterFace {
 	@Override
 	public void registerForCourse(int studentId, int courseId) throws StudentNotRegisteredException {
 		// TODO Auto-generated method stub
-		try{
-			students.registerForCourse(studentId,courseId);
-		}catch(StudentNotRegisteredException ex){
+		try {
+			students.registerForCourse(studentId, courseId);
+		} catch (StudentNotRegisteredException ex) {
 			throw ex;
 		}
 	}
@@ -83,5 +82,5 @@ public class StudentServiceOperation implements StudentInterFace {
 		// TODO Auto-generated method stub
 		return students.myCourses(studentId);
 	}
-	
+
 }

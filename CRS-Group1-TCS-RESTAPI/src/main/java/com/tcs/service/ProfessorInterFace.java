@@ -14,19 +14,19 @@ import com.tcs.exception.UserNotFoundException;
 public interface ProfessorInterFace {
 	/**
 	 * Professor registring using SQL commands
+	 * 
 	 * @param professor
-	 * @throws ProfessorNotRegisteredException 
+	 * @throws ProfessorNotRegisteredException
 	 */
 	void addProfessor(Professor professor) throws StudentNotRegisteredException;
-	
-	
-	
+
 	/**
 	 * Professor login using SQL commands
+	 * 
 	 * @param professorEmail
 	 * @param professorPasword
-	 * @throws UserNotFoundException 
+	 * @throws UserNotFoundException
 	 */
-	boolean loginProfessor(String professorEmail, String professorPasword) throws UserNotFoundException ;
+	boolean loginProfessor(String professorEmail, String professorPasword) throws UserNotFoundException;
 
 }

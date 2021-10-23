@@ -18,21 +18,19 @@ import com.tcs.exception.UserNotFoundException;
  */
 @Component
 public class ProfessorServiceOperation implements ProfessorInterFace {
-	
+
 	@Autowired
 	private ProfessorDAOInterFace professors;
-	
-	
+
 	@Override
 	public void addProfessor(Professor professor) throws StudentNotRegisteredException {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			professors.addProfessor(professor);
-		}catch(StudentNotRegisteredException ex){
+		} catch (StudentNotRegisteredException ex) {
 			throw ex;
-		}	
+		}
 	}
-
 
 	@Override
 	public boolean loginProfessor(String professorEmail, String professorPasword) throws UserNotFoundException {
