@@ -79,4 +79,11 @@ public interface StudentDAOInterFace {
 	 * @throws SQLException 
 	 */
 	public List myCourses(int studentId) throws SQLException;
+	
+	/**
+	 * Students can see amount to pay for registered courses  SQL commands
+	 * @param studentId 
+	 * @throws SQLException 
+	 */
+	public double myPayment(int studentId) throws SQLException;
 }

@@ -83,5 +83,12 @@ public class StudentServiceOperation implements StudentInterFace {
 		// TODO Auto-generated method stub
 		return students.myCourses(studentId);
 	}
+
+	@Override
+	public double myPayment(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		return students.myPayment(studentId);
+	}
 	
 }

@@ -178,4 +178,15 @@ public class StudentControllers {
 	public List getMyCourses(@QueryParam("studentId") int studentId) throws SQLException {
 		return students.getMyCourses(studentId);
 	}
+	
+	/**
+	 * Students can see amount to pay for registered courses  SQL commands
+	 * @param studentId 
+	 * @throws SQLException 
+	 */
+	@RequestMapping(value="/student/mypayment",method=RequestMethod.GET)
+	public double myPayment(int studentId) throws SQLException{
+		return students.myPayment(studentId);
+		
+	}
 }

@@ -51,6 +51,7 @@ public class StudentOperation implements StudentDAOInterFace {
 	@Override
 	public List allStudentsList() throws SQLException {
 		// TODO Auto-generated method stub
+		
 		List<Student> students = new ArrayList<Student>();
 		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.FETCH_STUDENT);
 		ResultSet rs = stmt.executeQuery();
@@ -144,6 +145,18 @@ public class StudentOperation implements StudentDAOInterFace {
 			myCourses.add(new String(rs.getString(1)));
 		}
 		return myCourses;
+	}
+
+	@Override
+	public double myPayment(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		double payment = 0;
+		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.PAYMENT_FOR_REGISTERED_COURSES);
+		stmt.setInt(1, studentId);
+		ResultSet st = stmt.executeQuery();
+		st.next();
+		payment = st.getDouble(1);
+		return payment;
 	}
 
 	

@@ -31,4 +31,5 @@ public class SQLQueriesConstants {
 	//Professor Queries:-
 	public static final String ADD_PROFESSOR="insert into professors (professorId,professorDept,professorName,professorEmail,professorMobile,professorPasword) values (?,?,?,?,?,?)";
 	public static final String PROFESSOR_VERIFY_CREDENTIALS="select professorPasword from professors where professorEmail= ?";
+	public static final String PAYMENT_FOR_REGISTERED_COURSES="select count(cou)*300 from registeredcourse where std=?";
 }
