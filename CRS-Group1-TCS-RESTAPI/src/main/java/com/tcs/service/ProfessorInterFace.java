@@ -29,4 +29,6 @@ public interface ProfessorInterFace {
 	 */
 	boolean loginProfessor(String professorEmail, String professorPasword) throws UserNotFoundException;
 
+    String addGrade(int studentId, int courseId, String grade) throws UserNotFoundException;
+
 }

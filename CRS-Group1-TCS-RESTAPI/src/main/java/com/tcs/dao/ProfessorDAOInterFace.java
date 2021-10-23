@@ -29,4 +29,6 @@ public interface ProfessorDAOInterFace {
 	 * @throws UserNotFoundException
 	 */
 	public boolean professorLogin(String professorEmail, String professorPasword) throws UserNotFoundException;
+
+    public String addGrade(int studentId, int courseId, String grade) throws UserNotFoundException;
 }

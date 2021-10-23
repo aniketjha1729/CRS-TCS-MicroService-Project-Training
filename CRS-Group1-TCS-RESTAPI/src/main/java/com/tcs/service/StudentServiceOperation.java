@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.tcs.bean.Grade;
 import com.tcs.bean.Student;
 import com.tcs.dao.StudentDAOInterFace;
 import com.tcs.exception.StudentNotRegisteredException;
@@ -88,5 +89,13 @@ public class StudentServiceOperation implements StudentInterFace {
 		// TODO Auto-generated method stub
 		return students.getMyFee(studentId);
 	}
+
+	@Override
+	public List<Grade> myGradeCard(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		return students.myGradeCard(studentId);
+	}
+
+	
 
 }

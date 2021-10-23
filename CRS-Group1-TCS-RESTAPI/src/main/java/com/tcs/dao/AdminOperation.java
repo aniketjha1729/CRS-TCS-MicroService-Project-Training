@@ -98,8 +98,7 @@ public class AdminOperation implements AdminDAOInterFace {
 		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.ADMIN_FETCH_COURSES);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
-			courses.add(new Course(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(6),
-					rs.getString(5)));
+			courses.add(new Course(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
 		}
 		return courses;
 	}
@@ -168,6 +167,6 @@ public class AdminOperation implements AdminDAOInterFace {
 		} catch (SQLException se) {
 			System.out.println(se);
 		}
-		
+
 	}
 }

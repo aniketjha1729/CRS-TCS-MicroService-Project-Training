@@ -18,6 +18,7 @@ public class SQLQueriesConstants {
 	public static final String STUDENT_ADD_COURSE="insert into registeredcourse (std,cou) values ( ? , ? )";
 	public static final String STUDENT_MY_COURSE="select c.coursename from courses c join registeredcourse r on r.cou = c.courseId JOIN students s ON s.studentId=r.std where r.std = ?";
 	public static final String PAYMENT_FOR_REGISTERED_COURSES="select count(cou)*300 from registeredcourse where std=?";
+	public static final String STUDENT_GRADE_CARD = "select c.coursename, grade from courses c join registeredcourse r on r.cou = c.courseId JOIN students s ON s.studentId=r.std where r.std = ?";
 	//Admin Queries:-
 	public static final String ADMIN_VERIFY_CREDENTIALS="select adminPassword from admin where adminuserName= ?";
 	public static final String ADMIN_VIEW_COURSES="select courseCode,courseName from courses";
@@ -29,7 +30,10 @@ public class SQLQueriesConstants {
 	public static final String ADMIN_SELECTED_COURSE = "select * from courses where courseCode= ";
 	public static final String ADMIN_APPROVE_PROFESSOR = "update professors set approvedStatus = ? where professorId = ?";
 	public static final String ADMIN_APPROVE_STUDENT = "update students set approvedStatus = ? where studentId = ?";
+	
 	//Professor Queries:-
 	public static final String ADD_PROFESSOR="insert into professors (professorId,professorDept,professorName,professorEmail,professorMobile,professorPasword) values (?,?,?,?,?,?)";
 	public static final String PROFESSOR_VERIFY_CREDENTIALS="select professorPasword from professors where professorEmail= ?";
+	public static final String PROFESSOR_ADD_GRADE="update registeredcourse set grade = ? where std = ? and cou=?";
+
 }

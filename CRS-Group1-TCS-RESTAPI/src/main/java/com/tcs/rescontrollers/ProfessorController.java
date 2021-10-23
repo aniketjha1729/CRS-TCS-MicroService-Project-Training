@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,8 @@ import com.tcs.bean.Student;
 import com.tcs.exception.UserNotFoundException;
 import com.tcs.service.ProfessorInterFace;
 import com.tcs.service.StudentInterFace;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * @author Aniket
@@ -66,4 +69,12 @@ public class ProfessorController {
 			return new ResponseEntity("User Name or Password is incorrect ", HttpStatus.NOT_FOUND);
 		}
 	}
+
+
+	@RequestMapping(value="/addGrade/{studentId}", method=RequestMethod.PUT)
+	public String addGrade(@PathVariable int studentId,@QueryParam("courseId") int courseId,
+	@QueryParam("grade") String grade) throws UserNotFoundException {
+		return professors.addGrade(studentId,courseId,grade);
+	}
+	
 }

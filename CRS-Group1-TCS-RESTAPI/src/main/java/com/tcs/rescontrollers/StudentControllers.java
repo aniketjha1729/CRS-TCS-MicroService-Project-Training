@@ -26,10 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcs.bean.Grade;
 import com.tcs.bean.Student;
 import com.tcs.exception.StudentNotRegisteredException;
 import com.tcs.exception.UserNotFoundException;
 import com.tcs.service.StudentInterFace;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * @author Aniket
@@ -174,5 +177,11 @@ public class StudentControllers {
 	public double getMyFee(@QueryParam("studentId") int studentId) throws SQLException {
 		return students.getMyFee(studentId);
 	}
+
+	@RequestMapping(value="/myGradeCard/{studentId}", method=RequestMethod.GET)
+	public List<Grade> requestMethodName(@PathVariable int studentId) throws SQLException{
+		return students.myGradeCard(studentId);
+	}
+	
 
 }

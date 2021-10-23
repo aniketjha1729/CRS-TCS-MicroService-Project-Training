@@ -37,4 +37,10 @@ public class ProfessorServiceOperation implements ProfessorInterFace {
 		// TODO Auto-generated method stub
 		return professors.professorLogin(professorEmail, professorPasword);
 	}
+
+	@Override
+	public String addGrade(int studentId, int courseId, String grade) throws UserNotFoundException {
+		// TODO Auto-generated method stub
+		return professors.addGrade(studentId,courseId,grade);
+	}
 }

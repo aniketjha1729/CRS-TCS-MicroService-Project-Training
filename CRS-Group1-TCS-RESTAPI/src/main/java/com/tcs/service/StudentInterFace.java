@@ -6,6 +6,7 @@ package com.tcs.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.tcs.bean.Grade;
 import com.tcs.bean.Student;
 import com.tcs.exception.StudentNotRegisteredException;
 import com.tcs.exception.UserNotFoundException;
@@ -82,4 +83,6 @@ public interface StudentInterFace {
 	public List getMyCourses(int studentId) throws SQLException;
 
     public double getMyFee(int studentId) throws SQLException;
+
+    public List<Grade> myGradeCard(int studentId) throws SQLException;
 }

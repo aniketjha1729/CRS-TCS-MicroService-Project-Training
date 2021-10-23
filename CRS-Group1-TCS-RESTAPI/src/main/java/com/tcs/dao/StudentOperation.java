@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.tcs.bean.Grade;
 import com.tcs.bean.Student;
 import com.tcs.constant.SQLQueriesConstants;
 import com.tcs.exception.StudentNotRegisteredException;
@@ -54,7 +55,7 @@ public class StudentOperation implements StudentDAOInterFace {
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			students.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7),rs.getString(8)));
+					rs.getString(6), rs.getString(7), rs.getString(8)));
 		}
 		return students;
 	}
@@ -67,7 +68,7 @@ public class StudentOperation implements StudentDAOInterFace {
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next())
 			return new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7),rs.getString(8));
+					rs.getString(6), rs.getString(7), rs.getString(8));
 		return null;
 	}
 
@@ -152,6 +153,19 @@ public class StudentOperation implements StudentDAOInterFace {
 		st.next();
 		payment = st.getDouble(1);
 		return payment;
+	}
+
+	@Override
+	public List<Grade> myGradeCard(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		List<Grade> myGradeCard = new ArrayList<Grade>();
+		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.STUDENT_GRADE_CARD);
+		stmt.setInt(1, studentId);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			myGradeCard.add(new Grade(rs.getString(1), rs.getString(2)));
+		}
+		return myGradeCard;
 	}
 
 }

@@ -64,4 +64,20 @@ public class ProfessorOperation implements ProfessorDAOInterFace {
 		return false;
 	}
 
+	@Override
+	public String addGrade(int studentId, int courseId, String grade) throws UserNotFoundException {
+		// TODO Auto-generated method stub
+		try {
+			PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.PROFESSOR_ADD_GRADE);
+			stmt.setString(1, grade);
+			stmt.setInt(2, studentId);
+			stmt.setInt(3, courseId);
+			int row = stmt.executeUpdate();
+			return "Grade successfully added";
+		} catch (SQLException se) {
+			System.out.println(se);
+		}
+		return "Something Went Wrong!!";
+	}
+
 }
