@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tcs.bean.Course;
+import com.tcs.bean.Student;
 import com.tcs.dao.AdminDAOInterFace;
 import com.tcs.dao.StudentDAOInterFace;
 import com.tcs.exception.CourseFoundException;
+import com.tcs.exception.StudentNotFoundForApprovalException;
 import com.tcs.exception.UserNotFoundException;
 import com.tcs.helper.AdminHelper;
 
@@ -84,12 +86,35 @@ public class AdminServiceOperation implements AdminInterFace {
 		return admin.deleteCourse(courseCode);
 	}
 
-
+	
 
 	@Override
 	public List getAllProfessors() throws SQLException {
 		// TODO Auto-generated method stub
 		return admin.Professors();
 	}
+
+	@Override
+	public List<Student> viewPendingAdmissions() throws SQLException {
+		// TODO Auto-generated method stub
+		
+		return admin.viewPendingAdmissions();
+	}
+
+	@Override
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException {
+		// TODO Auto-generated method stub
+		try {
+			admin.approveStudent(studentId);
+		}
+		catch(StudentNotFoundForApprovalException e) {
+			throw e;
+		}
+		
+	}
+
+
+
+	
 
 }

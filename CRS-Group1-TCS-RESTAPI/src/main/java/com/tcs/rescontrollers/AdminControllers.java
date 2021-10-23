@@ -24,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import com.tcs.bean.Course;
 import com.tcs.bean.Student;
 import com.tcs.exception.CourseFoundException;
+import com.tcs.exception.StudentNotFoundForApprovalException;
 import com.tcs.exception.UserNotFoundException;
 import com.tcs.service.AdminInterFace;
 import com.tcs.service.StudentInterFace;
@@ -57,9 +58,6 @@ public class AdminControllers {
 	}
 	
 	
-	
-	
-	
 	/**
 	 * Admin adding new courses using SQL commands
 	 * @param course
@@ -76,7 +74,6 @@ public class AdminControllers {
 	}
 	
 	
-	
 	/**
 	 * Admin viewing all Courses using SQL commands
 	 * @throws SQLException 
@@ -87,8 +84,6 @@ public class AdminControllers {
 	}
 	
 	
-	
-	
 	/**
 	 * Admin listing all professor using SQL commands
 	 * @throws SQLException 
@@ -97,8 +92,6 @@ public class AdminControllers {
 	public List getProfessors() throws SQLException {
 		return admin.getAllProfessors();
 	}
-	
-	
 	
 	
 	/**
@@ -118,10 +111,8 @@ public class AdminControllers {
 	}
 	
 	
-	
-	
 	/**
-	 * Admin delte course using SQL commands
+	 * Admin delete course using SQL commands
 	 * @param courseCode
 	 * @throws SQLException 
 	 */
@@ -132,5 +123,33 @@ public class AdminControllers {
 			return new ResponseEntity("No Course found for ID " + courseCode, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity(courseCode, HttpStatus.OK);
+	}
+	
+	
+	/**
+	 * Method to view Students yet to be approved by Admin
+	 * @return List of Students with pending admissions
+	 * @throws SQLException 
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/admin/pendingAdmissions")
+	public List<Student> viewPendingAdmissions() throws SQLException{
+		return admin.viewPendingAdmissions();
+		
+	}
+	
+	
+	/**
+	 * Method to approve a Student 
+	 * @param studentId 
+	 * @throws StudentNotFoundForApprovalException 
+	 */
+	@RequestMapping(value="/admin/approvedStudent",method=RequestMethod.GET)
+	public Response approveStudent(int studentId) throws StudentNotFoundForApprovalException{
+		try {
+			admin.approveStudent(studentId);
+			return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
+		} catch (Exception e) {
+			return Response.status(409).entity(e.getMessage()).build();
+		}	
 	}
 }

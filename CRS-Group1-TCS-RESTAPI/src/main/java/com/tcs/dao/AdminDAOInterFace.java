@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.tcs.bean.Course;
+import com.tcs.bean.Student;
 import com.tcs.exception.CourseFoundException;
+import com.tcs.exception.StudentNotFoundForApprovalException;
 import com.tcs.exception.UserNotFoundException;
 
 /**
@@ -21,14 +23,14 @@ public interface AdminDAOInterFace {
 	 * @param adminPassword
 	 * @throws UserNotFoundException 
 	 */
-	boolean adminLogin(String adminuserName, String adminPassword) throws UserNotFoundException;
+	public boolean adminLogin(String adminuserName, String adminPassword) throws UserNotFoundException;
 	
 	
 	/**
 	 * Admin viewing all Courses using SQL commands
 	 * @throws NoCourseFoundException 
 	 */
-	List<Course> viewCourse();
+	public List<Course> viewCourse();
 	
 	
 	
@@ -37,14 +39,14 @@ public interface AdminDAOInterFace {
 	 * @param course
 	 * @throws CourseFoundException 
 	 */
-	void addCourse(Course course) throws CourseFoundException;
+	public void addCourse(Course course) throws CourseFoundException;
 	
 	
 	/**
 	 * Admin viewing all Courses using SQL commands
 	 * @throws SQLException 
 	 */
-	List allCourses() throws SQLException;
+	public List allCourses() throws SQLException;
 	
 	
 	
@@ -54,7 +56,7 @@ public interface AdminDAOInterFace {
 	 * @param instructorId
 	 * @throws UserNotFoundException 
 	 */
-	void assignCourse(String courseCode, String instructorId) throws UserNotFoundException;
+	public void assignCourse(String courseCode, String instructorId) throws UserNotFoundException;
 	
 	
 	
@@ -63,7 +65,7 @@ public interface AdminDAOInterFace {
 	 * @param courseCode
 	 * @throws SQLException 
 	 */
-	Course deleteCourse(String courseCode) throws SQLException;
+	public Course deleteCourse(String courseCode) throws SQLException;
 	
 	
 	
@@ -71,6 +73,20 @@ public interface AdminDAOInterFace {
 	 * Admin listing all professor using SQL commands
 	 * @throws SQLException 
 	 */
-	List Professors() throws SQLException;
+	public List Professors() throws SQLException;
+	
+	/**
+	 * Fetch Students yet to approved using SQL commands
+	 * @return List of Students yet to approved
+	 * @throws SQLException 
+	 */
+	public List<Student> viewPendingAdmissions() throws SQLException;
+	
+	/**
+	 * Approve Student using SQL commands
+	 * @param studentId
+	 * @throws StudentNotFoundException
+	 */
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException;
 
 }

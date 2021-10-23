@@ -26,6 +26,8 @@ public class SQLQueriesConstants {
 	public static final String ADMIN_ADMIN_ASSIGNCOURSES="update courses set instructorId = ? where courseCode = ?";
 	public static final String ADMIN_DELETE_COURSE = "delete from courses where courseCode= ?";
 	public static final String ADMIN_SELECTED_COURSE = "select * from courses where courseCode= ";
+	public static final String APPROVE_STUDENT_QUERY = "update students set approvedStatus = 'Approved' where studentId = ?";
+	public static final String PENDING_STUDENT_LIST = "select * from students where approvedStatus='pending'";
 	//Professor Queries:-
 	public static final String ADD_PROFESSOR="insert into professors (professorId,professorDept,professorName,professorEmail,professorMobile,professorPasword) values (?,?,?,?,?,?)";
 	public static final String PROFESSOR_VERIFY_CREDENTIALS="select professorPasword from professors where professorEmail= ?";

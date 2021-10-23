@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.tcs.bean.Course;
+import com.tcs.bean.Student;
 import com.tcs.exception.CourseFoundException;
+import com.tcs.exception.StudentNotFoundForApprovalException;
 import com.tcs.exception.UserNotFoundException;
 
 /**
@@ -68,5 +70,19 @@ public interface AdminInterFace {
 	 * @throws SQLException 
 	 */
 	List getAllProfessors() throws SQLException;
+	
+	/**
+	 * Method to view Students yet to be approved by Admin
+	 * @return List of Students with pending admissions
+	 * @throws SQLException 
+	 */
+	public List<Student> viewPendingAdmissions() throws SQLException;
+	
+	/**
+	 * Method to approve a Student 
+	 * @param studentId 
+	 * @throws StudentNotFoundForApprovalException 
+	 */
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException;
 	
 }

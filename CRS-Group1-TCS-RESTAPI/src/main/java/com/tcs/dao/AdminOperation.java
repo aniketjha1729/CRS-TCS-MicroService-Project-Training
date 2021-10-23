@@ -18,6 +18,7 @@ import com.tcs.bean.Professor;
 import com.tcs.bean.Student;
 import com.tcs.constant.SQLQueriesConstants;
 import com.tcs.exception.CourseFoundException;
+import com.tcs.exception.StudentNotFoundForApprovalException;
 import com.tcs.exception.UserNotFoundException;
 import com.tcs.utils.DBUtils;
 
@@ -57,6 +58,7 @@ public class AdminOperation implements AdminDAOInterFace {
 		return false;
 		
 	}
+	
 	@Override
 	public List<Course> viewCourse(){
 		// TODO Auto-generated method stub
@@ -103,6 +105,7 @@ public class AdminOperation implements AdminDAOInterFace {
 		}
 		return courses;
 	}
+	
 	@Override
 	public void assignCourse(String courseCode, String instructorId) throws UserNotFoundException {
 		// TODO Auto-generated method stub
@@ -115,6 +118,7 @@ public class AdminOperation implements AdminDAOInterFace {
 			System.out.println(se);
 		}
 	}
+	
 	@Override
 	public Course deleteCourse(String courseCode) throws SQLException {
 		// TODO Auto-generated method stub
@@ -128,6 +132,7 @@ public class AdminOperation implements AdminDAOInterFace {
 			return new Course();
 		return null;
 	}
+	
 	@Override
 	public List Professors() throws SQLException {
 		// TODO Auto-generated method stub
@@ -140,5 +145,38 @@ public class AdminOperation implements AdminDAOInterFace {
 		}
 		return professorList;
 	}
+	
+	@Override
+	public List<Student> viewPendingAdmissions() throws SQLException {
+		// TODO Auto-generated method stub
+		List<Student> pendingStudentList = new ArrayList<>();
+		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.PENDING_STUDENT_LIST);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()) {
+			pendingStudentList.add(new Student(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+					rs.getString(6),rs.getString(7)));
+		}
+		return pendingStudentList;
+	}
+	
+	@Override
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException {
+		// TODO Auto-generated method stub
+		try {
+			PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.APPROVE_STUDENT_QUERY);
+			stmt.setInt(1, studentId);
+			int row = stmt.executeUpdate();
+			if(row == 0) {
+				throw new StudentNotFoundForApprovalException(studentId);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 }
