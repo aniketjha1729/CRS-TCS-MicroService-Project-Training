@@ -80,4 +80,6 @@ public interface StudentInterFace {
 	 * @throws SQLException
 	 */
 	public List getMyCourses(int studentId) throws SQLException;
+
+    public double getMyFee(int studentId) throws SQLException;
 }

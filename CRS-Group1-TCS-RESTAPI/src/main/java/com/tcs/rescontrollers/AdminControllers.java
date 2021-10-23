@@ -132,14 +132,22 @@ public class AdminControllers {
 	 * @throws SQLException
 	 */
 	@RequestMapping(value = "/admin/professor/approve/{professorId}", method = RequestMethod.PUT)
-	public Response requestMethodName(@PathVariable int professorId, @QueryParam("approved") String approved) {
+	public Response approveProfessor(@PathVariable int professorId, @QueryParam("approved") String approved) {
 		try {
 			admin.approveProfessor(professorId, approved);
-			return Response.status(201).entity("Prfessor: " + professorId + " is approved: ").build();
+			return Response.status(201).entity("Professor: " + professorId + " is approved: ").build();
 		} catch (Exception e) {
 			return Response.status(409).entity(e.getMessage()).build();
-
 		}
 	}
 
+	@RequestMapping(value = "/admin/student/approve/{studentId}", method = RequestMethod.PUT)
+	public Response approveStudent(@PathVariable int studentId, @QueryParam("approved") String approved) {
+		try {
+			admin.approveStudent(studentId, approved);
+			return Response.status(201).entity("Student: " + studentId + " is approved: ").build();
+		} catch (Exception e) {
+			return Response.status(409).entity(e.getMessage()).build();
+		}
+	}
 }

@@ -54,7 +54,7 @@ public class StudentOperation implements StudentDAOInterFace {
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			students.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7)));
+					rs.getString(6), rs.getString(7),rs.getString(8)));
 		}
 		return students;
 	}
@@ -67,7 +67,7 @@ public class StudentOperation implements StudentDAOInterFace {
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next())
 			return new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7));
+					rs.getString(6), rs.getString(7),rs.getString(8));
 		return null;
 	}
 
@@ -140,6 +140,18 @@ public class StudentOperation implements StudentDAOInterFace {
 			myCourses.add(new String(rs.getString(1)));
 		}
 		return myCourses;
+	}
+
+	@Override
+	public double getMyFee(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		double payment = 0;
+		PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.PAYMENT_FOR_REGISTERED_COURSES);
+		stmt.setInt(1, studentId);
+		ResultSet st = stmt.executeQuery();
+		st.next();
+		payment = st.getDouble(1);
+		return payment;
 	}
 
 }

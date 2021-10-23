@@ -80,4 +80,6 @@ public interface StudentDAOInterFace {
 	 * @throws SQLException
 	 */
 	public List myCourses(int studentId) throws SQLException;
+
+    public double getMyFee(int studentId) throws SQLException;
 }

@@ -83,4 +83,10 @@ public class StudentServiceOperation implements StudentInterFace {
 		return students.myCourses(studentId);
 	}
 
+	@Override
+	public double getMyFee(int studentId) throws SQLException {
+		// TODO Auto-generated method stub
+		return students.getMyFee(studentId);
+	}
+
 }

@@ -91,4 +91,13 @@ public class AdminServiceOperation implements AdminInterFace {
 
 	}
 
+	@Override
+	public void approveStudent(int studentId, String approved) throws UserNotFoundException {
+		// TODO Auto-generated method stub
+		try {
+			admin.approveStudent(studentId, approved);
+		} catch (UserNotFoundException e) {
+			throw e;
+		}
+	}
 }

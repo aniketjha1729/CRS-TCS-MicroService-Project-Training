@@ -162,4 +162,17 @@ public class StudentControllers {
 	public List getMyCourses(@QueryParam("studentId") int studentId) throws SQLException {
 		return students.getMyCourses(studentId);
 	}
+
+
+	/**
+	 * Students can view his/her registered courses SQL commands
+	 * 
+	 * @param studentId
+	 * @throws SQLException
+	 */
+	@RequestMapping(value = "/myFee", method = RequestMethod.GET)
+	public double getMyFee(@QueryParam("studentId") int studentId) throws SQLException {
+		return students.getMyFee(studentId);
+	}
+
 }

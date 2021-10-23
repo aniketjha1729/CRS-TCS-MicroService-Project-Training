@@ -156,4 +156,18 @@ public class AdminOperation implements AdminDAOInterFace {
 			System.out.println(se);
 		}
 	}
+
+	@Override
+	public void approveStudent(int studentId, String approved) throws UserNotFoundException {
+		// TODO Auto-generated method stub
+		try {
+			PreparedStatement stmt = connection.prepareStatement(SQLQueriesConstants.ADMIN_APPROVE_STUDENT);
+			stmt.setInt(2, studentId);
+			stmt.setString(1, approved);
+			int row = stmt.executeUpdate();
+		} catch (SQLException se) {
+			System.out.println(se);
+		}
+		
+	}
 }

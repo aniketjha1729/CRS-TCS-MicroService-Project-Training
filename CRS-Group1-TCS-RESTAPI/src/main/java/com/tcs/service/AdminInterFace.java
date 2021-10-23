@@ -79,4 +79,6 @@ public interface AdminInterFace {
 	 */
 	void approveProfessor(int professorId, String approved) throws UserNotFoundException;
 
+    void approveStudent(int studentId, String approved) throws UserNotFoundException;
+
 }
