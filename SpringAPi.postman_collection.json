@@ -1,0 +1,434 @@
+{
+	"info": {
+		"_postman_id": "ad11f821-5b59-47f4-91c0-90a68ce1ad7c",
+		"name": "SpringAPi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addStudents",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"studentId\": 999,\r\n        \"studentName\": \"Yash Yadav\",\r\n        \"studentDept\": \"EE\",\r\n        \"studentEmail\":\"yash@gmail.com\",\r\n        \"studentMobile\":\"7712371231\",\r\n        \"studentGender\":\"Male\",\r\n        \"studentPasword\":\"a@kniket\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/login?adminuserName=aniketjha1729&adminPassword=a@Aniket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"login"
+					],
+					"query": [
+						{
+							"key": "adminuserName",
+							"value": "aniketjha1729"
+						},
+						{
+							"key": "adminPassword",
+							"value": "a@Aniket"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"courseId\":6,\r\n    \"courseCode\":\"CIVIL120\",\r\n    \"courseName\":\"CIVIL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/addCourse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"addCourse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCourses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignCourse",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/assigncourses?courseCode=IT430&instructorId=775",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"assigncourses"
+					],
+					"query": [
+						{
+							"key": "courseCode",
+							"value": "IT430"
+						},
+						{
+							"key": "instructorId",
+							"value": "775"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCourse",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/delete/CIVIL120",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"delete",
+						"CIVIL120"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProfessor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"professorId\":705,\r\n    \"professorDept\":\"CIVIL\",\r\n    \"professorName\":\"Mrs. Kapoor\",\r\n    \"professorEmail\":\"ka@gmail.com\",\r\n    \"professorMobile\":\"7744004499\",\r\n    \"professorPasword\":\"ad@1729\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfessorLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/professor/login?professorEmail=agg@gmail.com&professorPasword=ad@1729",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professor",
+						"login"
+					],
+					"query": [
+						{
+							"key": "professorEmail",
+							"value": "agg@gmail.com"
+						},
+						{
+							"key": "professorPasword",
+							"value": "ad@1729"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllProfessors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/professors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"professors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/student/addCourse?studentId=243&courseId=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"addCourse"
+					],
+					"query": [
+						{
+							"key": "studentId",
+							"value": "243"
+						},
+						{
+							"key": "courseId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MyCourse",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/student/mycourse?studentId=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"mycourse"
+					],
+					"query": [
+						{
+							"key": "studentId",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApproveProfessor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/professor/approve/999/?approved=approved",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"professor",
+						"approve",
+						"999",
+						""
+					],
+					"query": [
+						{
+							"key": "approved",
+							"value": "approved"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApproveStudents",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/student/approve/278/?approved=approved",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"student",
+						"approve",
+						"278",
+						""
+					],
+					"query": [
+						{
+							"key": "approved",
+							"value": "approved"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MyFees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/myFee?studentId=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"myFee"
+					],
+					"query": [
+						{
+							"key": "studentId",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Grade",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addGrade/205?courseId=2&grade=F",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addGrade",
+						"205"
+					],
+					"query": [
+						{
+							"key": "courseId",
+							"value": "2"
+						},
+						{
+							"key": "grade",
+							"value": "F"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MyGradeCard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/myGradeCard/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"myGradeCard",
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
