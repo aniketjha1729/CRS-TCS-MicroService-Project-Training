@@ -1,5 +1,5 @@
 /*
-MySQL Data Transfer
+MySQL Data Transfer CRS
 Source Host: localhost
 Source Database: crs
 Target Host: localhost
