@@ -21,6 +21,3 @@ This is a Course Registration System Rest API which is developed with the help o
     Hema Sundar Reddy
     Sushmita Shetty
     ```
-=======
-# CRS-TCS-group2-MicroService-Project-Training
->>>>>>> 525fb049f9dd61af46f89cf9fe6c738450f7e381
